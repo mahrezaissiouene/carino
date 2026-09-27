@@ -4,10 +4,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-   
     host: "0.0.0.0",
     port: 3000,
     strictPort: true,
-     allowedHosts : "a-ta-01m3j9f57bk4vkk4d0wz8wd3hs-5qwetdht3k0v6bjcn7dixregl.w.modal.host",
+    // Vite expects string[] | true. ".w.modal.host" matches any subdomain,
+    // so the sandbox hostname keeps working across sessions.
+    allowedHosts: [".w.modal.host", "localhost", "127.0.0.1"],
   },
 });
